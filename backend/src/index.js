@@ -23,7 +23,9 @@ console.log('🌍 Environment :', isProduction ? 'PRODUCTION' : 'DEVELOPMENT');
 
 app.set('trust proxy', 1);
 app.use(cors({
-  origin: ['http://localhost:5173', process.env.FRONTEND_URL].filter(Boolean),
+origin: isProduction
+  ? [process.env.FRONTEND_URL].filter(Boolean)
+  : ['http://localhost:5173', process.env.FRONTEND_URL].filter(Boolean),
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
@@ -69,6 +71,7 @@ const initializeConnection = async () => {
     isConnected = true;
   } catch (err) {
     console.error('❌ MongoDB failed:', err.message);
+    process.exit(1); // 👈 add this
   }
 };
 
