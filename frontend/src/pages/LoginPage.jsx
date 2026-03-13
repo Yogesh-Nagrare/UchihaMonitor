@@ -2,6 +2,7 @@ import React from 'react'
 
 const LoginPage = () => {
   const handleGoogleLogin = () => {
+    console.log(`${import.meta.env.VITE_API_URL}/auth/google/student`)
     // Redirects to backend which handles Google OAuth
     window.location.href = `${import.meta.env.VITE_API_URL}/auth/google/student`
   }
