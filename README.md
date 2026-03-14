@@ -105,7 +105,7 @@ UchihaMonitor/
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/UchihaMonitor.git
+git clone https://github.com/Yogesh-Nagrare/UchihaMonitor.git
 cd UchihaMonitor
 ```
 ---
@@ -113,8 +113,10 @@ cd UchihaMonitor
 ### 2. Backend setup
 
 ```bash
+
 cd backend
 npm install
+
 ```
 Create `backend/.env`:
 
@@ -123,17 +125,16 @@ NODE_ENV=development
 PORT=3000
 
 # MongoDB
-MONGODB_URI=mongodb+srv://your_user:
+MONGODB_URI=...
 # Redis
-REDIS_URL=redis://default:your_redis_password@your_host:port
+REDIS_URL=
 
 # JWT
-JWT_KEY=your_super_secret_jwt_key
-SESSION_SECRET=your_session_secret
-
+JWT_KEY=...
+SESSION_SECRET=...
 # Google OAuth
-GOOGLE_CLIENT_ID=your_google_client_id
-GOOGLE_CLIENT_SECRET=your_google_client_secret
+GOOGLE_CLIENT_ID=...
+GOOGLE_CLIENT_SECRET=...
 GOOGLE_CALLBACK_URL=...
 
 # Frontend URL (for CORS + redirects)
@@ -392,6 +393,6 @@ MIT License — feel free to fork and build your own version.
 
 <div align="center">
   <strong>Built with ❤️ — UchihaMonitor</strong><br/>
-  <a href="https://uchiha-monitor.vercel.app">Live App</a> · 
-  <a href="https://uchihamonitor.onrender.com/health">API Health</a>
+  <a href="https://uchiha-monitor.vercel.app">Live App
+  </a>
 </div>
