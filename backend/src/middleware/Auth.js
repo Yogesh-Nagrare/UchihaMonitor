@@ -2,6 +2,8 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const redisClient = require('../config/redis');
 
+const isProduction = process.env.NODE_ENV === 'production'
+
 // ── Verify JWT from cookie ────────────────────────────────────────────────────
 const isAuthenticated = async (req, res, next) => {
   try {
@@ -31,7 +33,7 @@ const isAuthenticated = async (req, res, next) => {
     }
 
     req.user = user;
-    req.token = token;       // attach so controllers can access it
+    req.token = token;
     req.tokenExp = decoded.exp;
     next();
   } catch (err) {
@@ -42,6 +44,24 @@ const isAuthenticated = async (req, res, next) => {
   }
 };
 
+// ── Cookie options ────────────────────────────────────────────────────────────
+// Production: secure + sameSite none (cross-origin: Vercel → Render)
+// Dev:        lax + not secure (same-origin localhost)
+const cookieOptions = {
+  httpOnly: true,
+  secure: isProduction,
+  sameSite: isProduction ? 'none' : 'lax',
+  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+  path: '/',
+}
+
+const clearCookieOptions = {
+  httpOnly: true,
+  secure: isProduction,
+  sameSite: isProduction ? 'none' : 'lax',
+  path: '/',
+}
+
 // ── Verify admin role ─────────────────────────────────────────────────────────
 const isAdmin = (req, res, next) => {
   if (!req.user || req.user.role !== 'admin') {
@@ -50,4 +70,4 @@ const isAdmin = (req, res, next) => {
   next();
 };
 
-module.exports = { isAuthenticated, isAdmin };
+module.exports = { isAuthenticated, isAdmin, cookieOptions, clearCookieOptions };
