@@ -1,41 +1,43 @@
 import React, { useEffect, useRef, useState } from 'react'
 
+import { Zap, Folder, Globe, History, Share2, RefreshCw } from "lucide-react"
+
 const FEATURES = [
   {
-    icon: '⚡',
+    icon: <Zap size={22} />,
     title: 'Smart Proxy Routing',
-    desc: 'External URLs auto-route through backend proxy. Localhost goes direct. Zero config, zero CORS headaches.',
-    color: '#6366f1', // Indigo
+    desc: 'External URLs auto-route...',
+    color: '#6366f1',
   },
   {
-    icon: '🗂️',
+    icon: <Folder size={22} />,
     title: 'Collections & Requests',
-    desc: 'Organize your API calls into collections. Rename, share, export, import — everything Postman does, leaner.',
-    color: '#10b981', // Emerald
+    desc: 'Organize your API calls...',
+    color: '#10b981',
   },
   {
-    icon: '🌍',
+    icon: <Globe size={22} />,
     title: 'Environments',
-    desc: 'Define variables like {{BASE_URL}} or {{API_KEY}} and swap environments in one click.',
-    color: '#0ea5e9', // Sky
+    desc: 'Define variables...',
+    color: '#0ea5e9',
   },
   {
-    icon: '📜',
+    icon: <History size={22} />,
     title: 'Request History',
-    desc: 'Every request you fire is logged. Search, replay, and inspect past calls grouped by date.',
-    color: '#a855f7', // Purple
+    desc: 'Every request you fire...',
+    color: '#a855f7',
   },
   {
-    icon: '🔗',
+    icon: <Share2 size={22} />,
     title: 'Share Collections',
-    desc: 'Generate a public link to your collection. Anyone can view it — no login required.',
-    color: '#f43f5e', // Rose
+    desc: 'Generate a public link...',
+    color: '#f43f5e',
   },
   {
-    icon: '🔄',
+    icon: <RefreshCw size={22} />,
     title: 'Import / Export',
-    desc: 'Import Postman v2.1 collections or our own format. Export any collection as JSON instantly.',
-    color: '#f59e0b', // Amber
+    desc: 'Import Postman...',
+    color: '#f59e0b',
   },
 ]
 
@@ -764,7 +766,7 @@ const LandingPage = ({ onGetStarted }) => {
           <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 16, color: '#f8fafc' }}>Monitor</span>
         </div>
         <p style={{ color: '#94a3b8', fontSize: 12, fontFamily: 'JetBrains Mono, monospace' }}>
-          Built for developers, by developers.
+          Built for developers, by Developer.
         </p>
         <p style={{ color: '#1e293b', fontSize: 12, fontFamily: 'JetBrains Mono, monospace' }}>
           v1.0.0
